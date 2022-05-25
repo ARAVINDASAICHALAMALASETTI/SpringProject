@@ -1,0 +1,61 @@
+.todos-bg-container {
+
+    background-color: #b3ffff;
+    background: radial-gradient(rgba(179,255,255,0.5),rgba(255,255,255,0.5),rgba(0,0,0,0.2));
+    height: 100%;
+    width: 100vw;
+    background-size: contain;
+    padding: 20px;
+    text-align: center;
+}
+
+.main-heading{
+    font-family: Georgia;
+    font-size: 31px;
+    color: rgba(138, 190, 53, 0.801);
+    font-weight: 800;
+}
+.center {
+    text-align: right;
+}
+
+table{
+    border-collapse: collapse;
+     background-size: cover;
+    margin: 50px auto;
+    background-color: burlywood;
+}
+
+table,th,td{
+    border: 2px solid black;
+    padding: 10px;
+}
+
+th{
+    font-size: 16px;
+    font-weight: 700;
+    font-family: Arial;
+    text-align: center;
+    color: #004d00;
+    padding: 8px;
+}
+
+td{
+    font-size: 14px;
+    color: crimson;
+    font-weight: 400;
+    font-family: Georgia;
+    text-align: center;
+}
+
+
+.gap{
+    margin-left: 18vw;
+}
+
+.design{
+	height: 15px;
+	width: 15px;
+	padding: 5px;
+	margin: 12px;
+}

@@ -1,0 +1,91 @@
+.todos-bg-container {
+
+    background-color: #b3ffff;
+    background: radial-gradient(rgba(179,255,255,0.5),rgba(255,255,255,0.5),rgba(0,0,0,0.2));
+    height: 100%;
+    width: 100vw;
+    background-size: cover;
+    padding: 20px;
+    text-align: center;
+}
+
+.main-heading{
+    font-family: Georgia;
+    font-size: 31px;
+    color: rgba(138, 190, 53, 0.801);
+    font-weight: 800;
+}
+.heading {
+
+    font-family: "Roboto";
+    font-size: 100%;
+    font-weight: bold;
+    color: #5BBBD9;
+    margin-top: 2vh;
+}
+
+.todo-user-input {
+
+    background-color: orange;
+    height: 5vh;
+    width: 55%;
+    font-size: 18px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #e4e7eb;
+    border-radius: 10px;
+    margin-left: 3vw;
+    padding: 15px;
+
+}
+
+.add-todo-button {
+
+    color: whitesmoke;
+    background-color: #001a66;
+    font-family: "Cosmic Sans Ms", cursive ,sans-serif;
+    font-size: 20px;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.5);
+    margin-top: 10px;
+    height: 6vh;
+    width: 150px;
+}
+
+.center {
+    text-align: center;
+}
+
+table{
+    border-collapse: collapse;
+    width: 95%;
+    margin: 50px auto;
+    background-color: burlywood;
+}
+
+table,th,td{
+    border: 2px solid black;
+    padding: 5px;
+}
+
+th{
+    font-size: 20px;
+    font-weight: 700;
+    font-family: Arial;
+    color: #004d00;
+    padding: 5px;
+}
+
+td{
+    font-size: 18px;
+    color: crimson;
+    font-weight: 400;
+    font-family: Georgia;
+}
+
+.del-icon{
+    padding: 13px;
+}
+
+.gap{
+    margin-left: 18vw;
+}

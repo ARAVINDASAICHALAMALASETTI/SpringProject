@@ -1,0 +1,120 @@
+.change{
+    background: transparent;
+    height: 55%;
+    width: 75%;
+    padding: 5px;
+    margin: auto;
+    margin-top: 10%;
+}
+
+.error{
+	color: rgb(255, 255, 128);
+	text-align: center;
+	font-size: 15px;
+	margin-top: 7px;
+	
+}
+.heading{
+    color: rgb(255, 255, 128);
+    font-family: "Roboto";
+    font-size: 23px;
+    font-weight: 550;
+    text-align: justify;
+    margin-left: 25%;
+}
+.remember{
+    font-size: 17px;
+    color: blue;
+    font-family: "Roboto";
+}
+input[type = email], input[type = password] {
+    width: 50%;
+    padding: 10px;
+    color: black;
+    box-sizing: border-box;
+    
+}
+
+.submit {
+    background: brown;
+    color: yellow;
+    border: none;
+    padding: 10px;
+    font-family: verdana;
+    font-size: 13px;
+    margin: 5px 0;
+    text-align: center;
+    border-radius: 10px;
+    width: 10%;
+}
+
+body{
+    background-color: #061818;
+    background: linear-gradient(rgba(226, 230, 228, 0.952),rgba(159, 197, 20, 0.952),rgba(25, 194, 53, 0.082));
+    height: 100%;
+    width: 100vw;
+    background-size: contain;
+    padding: 20px;
+    
+}
+
+.center{
+    text-align: center;
+}
+
+
+.mheading{
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.word1{
+    text-align: justify;
+    
+}
+
+.Page{
+    color: rgb(128, 0, 128);
+    font-size: 45px;
+    font-family: "Roboto";
+    font-weight: bolder;
+}
+
+#error-msg{
+    font-family: 'Poppins',sans-serif;
+}
+    
+
+#icon{
+    text-align: center;
+    height: 50px;
+    position: relative;
+    font-size: 25px;
+    padding-top: 10px;
+}
+
+#error-msg{
+    display: none;
+    color: #f0af23;
+    font-family: 14px;
+    margin-top: 10px;
+}
+
+#pass-msg{
+    font-family: 'Poppins',sans-serif;
+}
+
+#icoon{
+    float: center;
+    height: 50px;
+    position: relative;
+    font-size: 25px;
+    padding-top: 10px;
+}
+
+#pass-msg{
+    display: none;
+    color: #f1c329;
+    font-family: 14px;
+    margin-top: 10px;
+}

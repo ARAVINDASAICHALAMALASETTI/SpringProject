@@ -1,0 +1,21 @@
+.nav-image {
+    height: 45px;
+    width: 75px;
+    
+}
+
+.bg-color {
+    background-color: gray;
+    height: 9vh;
+    
+}
+
+body{
+    background-color: #b3ffff;
+    background: radial-gradient(rgba(179,255,255,0.5),rgba(255,255,255,0.5),rgba(0,0,0,0.2));
+    height: 100%;
+    width: 100vw;
+    background-size: cover;
+    padding: 20px;
+    text-align: center;    
+}
