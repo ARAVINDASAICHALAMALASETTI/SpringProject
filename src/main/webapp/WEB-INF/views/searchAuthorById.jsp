@@ -77,7 +77,7 @@
 						</tbody>
 					</table>
 					<div class="center">
-						<a href="ReturnMenu"><button class="btn btn-primary">Back</button></a>
+						<a href="/author/GetAuthorServlet"><button class="btn btn-primary">Back</button></a>
 					</div>
 
 				</div>

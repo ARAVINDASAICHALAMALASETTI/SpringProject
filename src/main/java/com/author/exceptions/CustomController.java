@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
-@ControllerAdvice
+import com.author.exception.AuthorIdNotFoundException;
+
+//@ControllerAdvice
 public class CustomController {
 
 	@ExceptionHandler(value = NoSuchElementException.class)
@@ -27,6 +29,12 @@ public class CustomController {
 	public ResponseEntity<CustomEx> handleNoSuchElementException(EmptyResultDataAccessException elementException){
 		CustomEx Ce = new CustomEx(new Date(), 601, "No value is present in Data Base");
 		return new ResponseEntity<CustomEx>(Ce, HttpStatus.BAD_REQUEST);
+	}
+	
+	@ExceptionHandler(AuthorIdNotFoundException.class)
+	public ResponseEntity<CustomEx> handleNoHandlerFoundException(AuthorIdNotFoundException ex) {
+		CustomEx error = new CustomEx(new Date(),404, ex.getMessage());
+		return new ResponseEntity<CustomEx>(error, HttpStatus.NOT_FOUND);
 	}
 	
 	/*@ExceptionHandler(value = EmptyResultDataAccessException.class)

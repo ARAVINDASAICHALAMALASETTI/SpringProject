@@ -24,11 +24,11 @@ public class BookRestController {
 	Logger logger = Logger.getLogger(BookRestController.class.getName());
 
 	@PostMapping(value = "rest/addBook")
-	public List<AuthorBookDetailsDomain> addAuthor(@RequestBody AuthorBookDetailsDomain person) {
-
+	public AuthorBookDetailsDomain addAuthor(@RequestBody AuthorBookDetailsDomain person) {
+		
 		book.addBook(person);
 		logger.info("add book data");
-		return book.getallBookDetails();
+		return person;
 
 	}
 
@@ -51,11 +51,11 @@ public class BookRestController {
 	}
 
 	@PutMapping("rest/updateBook")
-	public List<AuthorBookDetailsDomain> updateBook(@RequestBody AuthorBookDetailsDomain person) {
+	public AuthorBookDetailsDomain updateBook(@RequestBody AuthorBookDetailsDomain person) {
 
 		book.updateBookDetails(person);
 		logger.info("update book details");
-		return book.getallBookDetails();
+		return person;
 
 	}
 	

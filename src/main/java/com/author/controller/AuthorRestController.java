@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.author.domain.Author;
+import com.author.exception.AuthorIdNotFoundException;
 import com.author.services.AuthorService;
+import com.author.validation.ValidationUtil;
 
 @RestController
 public class AuthorRestController {
@@ -24,11 +26,14 @@ public class AuthorRestController {
 	Logger logger = Logger.getLogger(AuthorRestController.class.getName());
 
 	@PostMapping(value = "rest/addAuthor")
-	public List<Author> addAuthor(@RequestBody Author person) {
-
-		author.addAuthor(person);
+	public Author addAuthor(@RequestBody Author person) throws AuthorIdNotFoundException {
+		String error = ValidationUtil.validate(person);
+		if (error != null && error.trim().length() > 0) {
+			throw new AuthorIdNotFoundException(error);
+		}
+		 author.addAuthor(person);
 		logger.info("add author data");
-		return author.getallAuthorDetails();
+		return person;
 
 	}
 
@@ -51,11 +56,14 @@ public class AuthorRestController {
 	}
 
 	@PutMapping("rest/updateAuthor")
-	public List<Author> updateAuthor(@RequestBody Author person) {
-
+	public Author updateAuthor(@RequestBody Author person) throws AuthorIdNotFoundException {
+		String error = ValidationUtil.validate(person);
+		if (error != null && error.trim().length() > 0) {
+			throw new AuthorIdNotFoundException(error);
+		}
 		author.updateAuthorDetails(person);
 		logger.info("update author details");
-		return author.getallAuthorDetails();
+		return person;
 
 	}
 
