@@ -36,7 +36,7 @@
                		<p class= "center"><form:errors path ="bookPagesCount" /></p>
                     <div class="d-flex flex-row justify-content-center mt-2">
                         <p class="heading m-auto">Book Pages</p>
-                        <form:input class="todo-user-input mt-2" placeholder="enter pages count" path = "bookPagesCount"/>
+                        <form:input type="number" class="todo-user-input mt-2" placeholder="enter pages count" path = "bookPagesCount"/>
                     </div>
               		<p class= "center"><form:errors path ="bookPublishDate" /></p>
             		<div class="d-flex flex-row justify-content-center mt-2">
@@ -71,7 +71,7 @@
                 </div>
             </div>
         <div class="d-flex justify-content-end p-2">
-        <a href="/book/GetBookServlet"><button class = "btn btn-primary">Back</button></a>
+        <a href="/author/GetAuthorServlet"><button class = "btn btn-primary">Back</button></a>
         </div>
     </div>
 </body>

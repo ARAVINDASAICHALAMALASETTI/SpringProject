@@ -1,7 +1,7 @@
 package com.author.controller;
 
 import java.util.List;
-import java.util.logging.Logger;
+
 
 import javax.servlet.http.HttpSession;
 
@@ -20,6 +20,8 @@ import com.author.domain.Author;
 import com.author.services.AuthorService;
 import com.author.validation.ValidationUtil;
 
+import lombok.extern.slf4j.Slf4j;
+@Slf4j
 @Controller
 @RequestMapping("/author/")
 
@@ -28,7 +30,7 @@ public class AuthorController {
 	@Autowired
 	AuthorService author;
 
-	Logger logger = Logger.getLogger(AuthorController.class.getName());
+	//Logger logger = Logger.getLogger(AuthorController.class.getName());
 	
 	@GetMapping("Add")
 	public String addAuthor() {
@@ -46,9 +48,9 @@ public class AuthorController {
 			return "addAuthor";
 		}
 		author.addAuthor(person);
-		logger.info("add author data");
+		log.info("add author data");
 		List<Author> authorList = author.getallAuthorDetails();
-		logger.info("get authors data");
+		log.info("get authors data");
 		model.addAttribute("authorList", authorList);
 		return "GetData";
 
@@ -57,7 +59,7 @@ public class AuthorController {
 	@GetMapping("/GetAuthorServlet")
 	public String getAuthor(ModelMap model) {
 		List<Author> authorList = author.getallAuthorDetails();
-		logger.info("get authors data");
+		log.info("get authors data");
 		model.addAttribute("authorList", authorList);
 		return "GetData";
 
@@ -84,7 +86,7 @@ public class AuthorController {
 		}
 		author.updateAuthorDetails(person);
 		List<Author> authorList = author.getallAuthorDetails();
-		logger.info("get authors data");
+		log.info("get authors data");
 		model.addAttribute("authorList", authorList);
 		return "GetData";
 
@@ -93,9 +95,9 @@ public class AuthorController {
 	@GetMapping("/Delete")
 	public String deleteAuthor(Integer authorId, ModelMap model) {
 		author.remove(authorId);
-		logger.info("remove author data");
+		log.info("remove author data");
 		List<Author> authorList = author.getallAuthorDetails();
-		logger.info("get all author's data");
+		log.info("get all author's data");
 		model.addAttribute("authorList", authorList);
 		return "GetData";
 
