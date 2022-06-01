@@ -2,7 +2,6 @@ package com.author.controller;
 
 import java.util.List;
 
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +28,8 @@ public class AuthorController {
 
 	@Autowired
 	AuthorService author;
+	
+	
 
 	//Logger logger = Logger.getLogger(AuthorController.class.getName());
 	
@@ -105,13 +106,13 @@ public class AuthorController {
 	
 	@GetMapping("/searchAuthor")
 	public String searchPatientRecord(String authorId, Model uiModel, HttpSession session) {
-		//String username = (String) session.getAttribute("username");
+		String username = (String) session.getAttribute("username");
 		Author authors = null;
 
-		/*if (username == null) {
+		if (username == null) {
 			uiModel.addAttribute("loginError", "your session is expired. Please re-enter your credentials");
-			return "loginform";
-		}*/
+			return "index";
+		}
 		
 			if(authorId.isEmpty()) {
 				uiModel.addAttribute("inValidauthorId", "Please enter valid author Id");

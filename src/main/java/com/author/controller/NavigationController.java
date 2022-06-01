@@ -7,7 +7,7 @@ public class NavigationController {
 
 	@GetMapping("/Logout")
 	public String logoutPage() {
-		return "loginform";
+		return "index";
 
 	}
 

@@ -5,6 +5,7 @@ import java.util.List;
 import com.author.domain.Author;
 
 
+
 public interface AuthorService{
 	
 	public boolean addAuthor(Author person);
@@ -14,6 +15,5 @@ public interface AuthorService{
 	public List<Author> sortByAuthorName();
 	public List<Author> createTable();
 	public Author findAuthorbyId(int authorId);
-	
 	
 }

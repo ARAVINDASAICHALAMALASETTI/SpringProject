@@ -20,8 +20,8 @@
             <div class="row">
                 <div class="col-12">
                 <div = "d-flex flex-row justify-content-right">
-                    <a href = "/Menu">
-                    	<button class="btn btn-primary">Home</button>
+                    <a>
+                    	<button class="btn btn-primary" onclick="Previous()">Home</button>
                     	</a>
                     <a href = "/Logout">
                     	<button class="btn btn-primary">Logout</button>
@@ -33,6 +33,9 @@
             </div>
        </div>
     </div>
+    <script>function Previous(){
+    	window.history.back()
+    }</script>
 </body>
 
 </html>

@@ -22,7 +22,7 @@
 <body>
 
 	<div class="change">
-		<form action="Login" method="post">
+		<form action="/author/Login" method="post">
 			<div class="center">
 				<h1 class="Page">Login</h1>
 				
@@ -43,8 +43,10 @@
 						me </span>
 				</div>
 				<button class="submit mb-5" onclick="Login()">Login</button>
+				<div>
+				<a href ="/author/addRegister">SignUp-?</a>
 			</div>
-
+			</div>
 		</form type="submit">
 	</div>
 

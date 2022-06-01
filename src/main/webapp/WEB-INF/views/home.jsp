@@ -47,6 +47,8 @@
 							
 							<li><a class="dropdown-item" href="/book/GetBookServlet">Get
 									All Books Data</a></li>
+							<li><a class="dropdown-item" href="/author/GetAllRegisterUsers">Get
+							Register User's List</a></li>
 						</ul></li>
 				</div>
 				<a class="nav-link active text-white" href="Logout">Logout</a>
