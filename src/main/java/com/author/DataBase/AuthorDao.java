@@ -1,4 +1,4 @@
-package com.author.util;
+package com.author.DataBase;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -11,9 +11,9 @@ import org.springframework.stereotype.Component;
 import com.author.domain.Author;
 
 @Component
-public class AuthorServiceJdbcUtil {
+public class AuthorDao {
 	
-	Logger logger = Logger.getLogger(AuthorServiceJdbcUtil.class.getName());
+	Logger logger = Logger.getLogger(AuthorDao.class.getName());
 
 	@Autowired
 	JdbcTemplate jdbc;
@@ -60,10 +60,36 @@ public class AuthorServiceJdbcUtil {
 
 	}
 
-	public Author authorId(int authorId) throws SQLException {
+	public Author authorId(int authorId, String authorName,String bornLocation,String bookTheme) throws SQLException {
+
+		//String SQL = ("select * from authortable p where" + "p.Author_Id LIKE CONCAT('%',:?,'%')" + "Or p.Author_name LIKE CONCAT('%',:?,'%')" + "Or p.Birth_place LIKE CONCAT('%',:?,'%')" + "Or p.Book_Theme LIKE CONCAT('%',:?,'%')");
+		String SQL = ("select * from authortable p where p.Author_Id LIKE CONCAT %?1%" + "Or p.Author_name LIKE CONCAT %?1%" + "Or p.Birth_place LIKE CONCAT %?1%" + "Or p.Book_Theme LIKE CONCAT %?1%");
+		boolean nativeQuery = true;
+		Author person = jdbc.queryForObject(SQL, new AuthorMapper(),authorId,authorName,bornLocation,bookTheme);
+		return person;
+
+	}//bookTheme
+	
+	public Author authorById(int authorId) throws SQLException {
 
 		String SQL = "select * from authortable where Author_Id=?";
 		Author person = jdbc.queryForObject(SQL, new AuthorMapper(),authorId);
+		return person;
+
+	}
+	
+	public Author bornLocation(String  bornLocation) throws SQLException {
+
+		String SQL = "select * from authortable where Birth_place=?";
+		Author person = jdbc.queryForObject(SQL, new AuthorMapper(),bornLocation);
+		return person;
+
+	}
+	
+	public Author bookTheme(String  bookTheme) throws SQLException {
+
+		String SQL = "select * from authortable where Book_Theme=?";
+		Author person = jdbc.queryForObject(SQL, new AuthorMapper(),bookTheme);
 		return person;
 
 	}

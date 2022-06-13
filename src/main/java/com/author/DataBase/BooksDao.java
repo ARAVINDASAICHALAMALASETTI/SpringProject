@@ -1,4 +1,4 @@
-package com.author.util;
+package com.author.DataBase;
 
 
 import java.sql.SQLException;
@@ -9,11 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
-import com.author.domain.AuthorBookDetailsDomain;
+import com.author.domain.AuthorBooks;
 @Component
-public class AuthorDetailsUtil {
+public class BooksDao {
 	
-	Logger logger = Logger.getLogger(AuthorDetailsUtil.class.getName());
+	Logger logger = Logger.getLogger(BooksDao.class.getName());
 	@Autowired
 	JdbcTemplate jdbc;
 	
@@ -27,7 +27,7 @@ public class AuthorDetailsUtil {
 	}
 	
 	
-	public AuthorBookDetailsDomain insertValues(AuthorBookDetailsDomain person) throws Exception{
+	public AuthorBooks insertValues(AuthorBooks person) throws Exception{
 	
 			String query = "insert into booksData (Author_Id, Book_name, Book_Pages_count,Book_Publish_Date,Joint_Authorship,Book_Language,Book_Price,Publishment) Values(?,?,?,?,?,?,?,?)";
 			jdbc.update(query, person.getAuthorId(), person.getBookName(), person.getBookPagesCount(), person.getBookPublishDate(), person.getJointAuthorship(), person.getBookLanguage(), person.getBookPrice(), person.getPublishment());
@@ -37,7 +37,7 @@ public class AuthorDetailsUtil {
    }
    
 	
-	public AuthorBookDetailsDomain updateValues(AuthorBookDetailsDomain person) throws SQLException {
+	public AuthorBooks updateValues(AuthorBooks person) throws SQLException {
 		
 			String SQL = "update booksData set Book_name=?,Book_Pages_count=?,Book_Publish_Date=?,Joint_Authorship=?,Book_Language=?,Book_Price=?,Publishment=? where Book_Id=?";
 			jdbc.update(SQL,person.getBookName(),person.getBookPagesCount(),person.getBookPublishDate(),person.getJointAuthorship(),person.getBookLanguage(),person.getBookPrice(),person.getPublishment(),person.getBookId());
@@ -46,10 +46,10 @@ public class AuthorDetailsUtil {
    } 
 	
 	
-	public List <AuthorBookDetailsDomain>authorDetailsList() throws SQLException{
+	public List <AuthorBooks>authorDetailsList() throws SQLException{
 		
 			String SQL = "select * from booksData";
-			List <AuthorBookDetailsDomain> person = jdbc.query(SQL, new BookMapper());
+			List <AuthorBooks> person = jdbc.query(SQL, new BookMapper());
 			return person;
 		
    }
@@ -63,19 +63,19 @@ public class AuthorDetailsUtil {
    }
 	
 	
-	public List<AuthorBookDetailsDomain> authorId(int authorId) throws SQLException{
+	public List<AuthorBooks> authorId(int authorId) throws SQLException{
 		
 			String SQL = "select * from booksData where Author_Id= ?";
-			List <AuthorBookDetailsDomain> person = jdbc.query(SQL, new BookMapper(),authorId);
+			List <AuthorBooks> person = jdbc.query(SQL, new BookMapper(),authorId);
 			return person;
 	}
    
 	
 	
-	public AuthorBookDetailsDomain findBookId(int bookId) throws SQLException {
+	public AuthorBooks findBookId(int bookId) throws SQLException {
 		
 			String SQL = "select * from booksData where Book_Id=?";
-			AuthorBookDetailsDomain person = jdbc.queryForObject(SQL, new BookMapper(),bookId );
+			AuthorBooks person = jdbc.queryForObject(SQL, new BookMapper(),bookId );
 			return person;
 		
    }

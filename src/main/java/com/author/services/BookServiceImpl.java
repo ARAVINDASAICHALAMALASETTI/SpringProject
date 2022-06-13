@@ -6,16 +6,16 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.author.domain.AuthorBookDetailsDomain;
-import com.author.util.AuthorDetailsUtil;
+import com.author.DataBase.BooksDao;
+import com.author.domain.AuthorBooks;
 @Service
-public class AuthorDetailsJdbcImpl implements AuthorDetailsService {
+public class BookServiceImpl implements BooksService {
 	@Autowired
-	 AuthorDetailsUtil author;
+	 BooksDao author;
 
 	 
 	 @Override
-		public List<AuthorBookDetailsDomain> createTable() {
+		public List<AuthorBooks> createTable() {
 			// TODO Auto-generated method stub
 			try {
 				author.createTable();
@@ -28,7 +28,7 @@ public class AuthorDetailsJdbcImpl implements AuthorDetailsService {
 	 
 
 	@Override
-	public boolean addBook(AuthorBookDetailsDomain person) {
+	public boolean addBook(AuthorBooks person) {
 		// TODO Auto-generated method stub
 		try {
 			author.insertValues(person);
@@ -41,7 +41,7 @@ public class AuthorDetailsJdbcImpl implements AuthorDetailsService {
 	}
 	
 	@Override
-	public AuthorBookDetailsDomain updateBookDetails(AuthorBookDetailsDomain person) {
+	public AuthorBooks updateBookDetails(AuthorBooks person) {
 		// TODO Auto-generated method stub
 		try {
 			return author.updateValues(person);
@@ -55,7 +55,7 @@ public class AuthorDetailsJdbcImpl implements AuthorDetailsService {
 	
 	
 	@Override
-	public List<AuthorBookDetailsDomain> getallBookDetails() {
+	public List<AuthorBooks> getallBookDetails() {
 		// TODO Auto-generated method stub
 		try {
 			return author.authorDetailsList();
@@ -82,7 +82,7 @@ public class AuthorDetailsJdbcImpl implements AuthorDetailsService {
 
 
 	@Override
-	public List<AuthorBookDetailsDomain> findAuthorbyId(int authorId) {
+	public List<AuthorBooks> findAuthorbyId(int authorId) {
 		// TODO Auto-generated method stub
 		try {
 			return author.authorId(authorId);
@@ -95,7 +95,7 @@ public class AuthorDetailsJdbcImpl implements AuthorDetailsService {
 
 
 	@Override
-	public AuthorBookDetailsDomain findBookId(int bookId) {
+	public AuthorBooks findBookId(int bookId) {
 		// TODO Auto-generated method stub
 				try {
 					return author.findBookId(bookId);

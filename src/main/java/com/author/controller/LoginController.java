@@ -19,31 +19,36 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.author.domain.Author;
-import com.author.domain.AuthorBookDetailsDomain;
+import com.author.domain.AuthorBooks;
 import com.author.domain.RegisterForm;
-import com.author.services.RegisterService;
-import com.author.validation.ValidationUtil;
+import com.author.services.RegistrationService;
+import com.author.validation.AuthorValidations;
 
 @Controller
 @RequestMapping("/author/")
 public class LoginController {
 	
 	@Autowired
-	RegisterService register;
+	RegistrationService register;
 	
 	Logger logger = Logger.getLogger(LoginController.class.getName());
 	
 	@GetMapping("/")
-	private String index() {
+	private String index(Model model,HttpSession session) {
+		String username = (String) session.getAttribute("username");
+		if (username == null) {
+			model.addAttribute("loginError", "your session is expired. Please re-enter your credentials");
+			return "index";
+		}
 		return "index";
 	}
 
 	@PostMapping("/Login")
 	private String menu(ModelMap model, String username, String password, HttpSession session) {
-
-		if (username.equals("arvindsai123@gmail.com") && password.equals("asdf1234")) {
-			session.setAttribute("username", username);
-			model.addAttribute("username", username);
+		 RegisterForm registerList = register.getRegisterFormDetailsList(username);
+		if (registerList.getEmail().equals(username) && registerList.getPassword().equals(password)) {
+			session.setAttribute("username", registerList.getUserName());
+			model.addAttribute("username", registerList.getUserName());
 			return "home";
 		} else {
 			model.put("loginError", "Invalid username and password");
@@ -54,7 +59,12 @@ public class LoginController {
 	}
 	
 	@GetMapping("/addRegister")
-	public String addRegisterUser(String registerId,Model model){
+	public String addRegisterUser(String registerId,Model model,HttpSession session){
+		/*String username = (String) session.getAttribute("username");
+		if (username == null) {
+			model.addAttribute("loginError", "your session is expired. Please re-enter your credentials");
+			return "index";
+		}*/
 		model.addAttribute("registerId", registerId);
 		model.addAttribute("registerForm", new RegisterForm());
 		return "registerform";
@@ -62,7 +72,7 @@ public class LoginController {
 	}
 	
 	@PostMapping("/addRegister")
-	public  String addRegisterUser(@Valid @ModelAttribute("registerForm") RegisterForm person,BindingResult result,ModelMap model) {
+	public  String addRegisterUser(@Valid @ModelAttribute("registerForm") RegisterForm person,BindingResult result,ModelMap model,HttpSession session) {
 		
 		if(result.hasErrors()) {
 			List<ObjectError> allErrors = result.getAllErrors();
@@ -78,8 +88,13 @@ public class LoginController {
 	}
 	
 	@GetMapping("/GetAllRegisterUsers")
-	public String getallRegisterUsers(ModelMap model) {
-		List <RegisterForm> registerList = register.getRegisterFormDetailsList();
+	public String getallRegisterUsers(ModelMap model,HttpSession session) {
+		String username = (String) session.getAttribute("username");
+		if (username == null) {
+			model.addAttribute("loginError", "your session is expired. Please re-enter your credentials");
+			return "index";
+		}
+		List <RegisterForm> registerList = register.getAllRegisterFormDetailsList();
 		logger.info("get all register users list");
 		model.addAttribute("registerList",registerList);
 		return "GetRegisterData";

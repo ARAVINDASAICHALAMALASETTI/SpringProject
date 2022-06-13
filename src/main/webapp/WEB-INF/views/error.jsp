@@ -21,7 +21,7 @@
                 <div class="col-12">
                 <div = "d-flex flex-row justify-content-right">
                     <a>
-                    	<button class="btn btn-primary" onclick="Previous()">Home</button>
+                    	<button class="btn btn-primary" onclick="Previous()">Back</button>
                     	</a>
                     <a href = "/Logout">
                     	<button class="btn btn-primary">Logout</button>

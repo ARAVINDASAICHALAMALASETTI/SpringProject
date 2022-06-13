@@ -1,4 +1,4 @@
-package com.author.util;
+package com.author.DataBase;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

@@ -29,7 +29,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-12">
-					<h3 class="main-heading pt-4 mt-5">Edit Author's data</h3>
+					<h3 class="main-heading pt-4 mt-5">Edit Author data</h3>
 					<form action="/author/Edit" modelAttribute="author" method="post">
 						<p class="error">
 							<c:out value="${emptyFliedError }"></c:out>

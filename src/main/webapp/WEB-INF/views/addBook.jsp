@@ -20,7 +20,7 @@
             <div class="row">
                 <div class="col-12">
                 <div class="center">
-                    <h3 class="main-heading pt-4 mt-5 mb-2">Add Book's Data</h3>
+                    <h3 class="main-heading pt-4 mt-5 mb-2">Add Book Data</h3>
                     
                     </div>
                     <form:form action = "/book/add" modelAttribute="person" method="post">

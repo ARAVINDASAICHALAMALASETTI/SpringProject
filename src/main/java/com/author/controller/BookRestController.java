@@ -12,19 +12,19 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.author.domain.AuthorBookDetailsDomain;
-import com.author.services.AuthorDetailsService;
+import com.author.domain.AuthorBooks;
+import com.author.services.BooksService;
 
 @RestController
 public class BookRestController {
 
 	@Autowired
-	AuthorDetailsService book;
+	BooksService book;
 	
 	Logger logger = Logger.getLogger(BookRestController.class.getName());
 
 	@PostMapping(value = "rest/addBook")
-	public AuthorBookDetailsDomain addAuthor(@RequestBody AuthorBookDetailsDomain person) {
+	public AuthorBooks addAuthor(@RequestBody AuthorBooks person) {
 		
 		book.addBook(person);
 		logger.info("add book data");
@@ -33,25 +33,25 @@ public class BookRestController {
 	}
 
 	@GetMapping(value = "rest/GetAllBooks", produces = "application/json")
-	public List<AuthorBookDetailsDomain> getAllBooks() {
+	public List<AuthorBooks> getAllBooks() {
 
-		List<AuthorBookDetailsDomain> authorList = book.getallBookDetails();
+		List<AuthorBooks> authorList = book.getallBookDetails();
 		logger.info("get all books data");
 		return authorList;
 
 	}
 
 	@GetMapping("rest/GetBook/{bookId}")
-	public AuthorBookDetailsDomain getAuthorId(@PathVariable Integer bookId) {
+	public AuthorBooks getAuthorId(@PathVariable Integer bookId) {
 
-		AuthorBookDetailsDomain authorList = book.findBookId(bookId);
+		AuthorBooks authorList = book.findBookId(bookId);
 		logger.info("get book by id");
 		return authorList;
 
 	}
 
 	@PutMapping("rest/updateBook")
-	public AuthorBookDetailsDomain updateBook(@RequestBody AuthorBookDetailsDomain person) {
+	public AuthorBooks updateBook(@RequestBody AuthorBooks person) {
 
 		book.updateBookDetails(person);
 		logger.info("update book details");
@@ -60,16 +60,16 @@ public class BookRestController {
 	}
 	
 	@GetMapping("rest/FindAuthorById/{authorId}")
-	public List<AuthorBookDetailsDomain> getAuthorBook(@PathVariable Integer authorId) {
+	public List<AuthorBooks> getAuthorBook(@PathVariable Integer authorId) {
 
-		List<AuthorBookDetailsDomain> authorList = book.findAuthorbyId(authorId);
+		List<AuthorBooks> authorList = book.findAuthorbyId(authorId);
 		logger.info("get books data");
 		return authorList;
 
 	}
 
 	@DeleteMapping("rest/deleteBook/{bookId}")
-	public List<AuthorBookDetailsDomain> deleteBook(@PathVariable Integer bookId) {
+	public List<AuthorBooks> deleteBook(@PathVariable Integer bookId) {
 
 		book.remove(bookId);
 		logger.info("remove book data");

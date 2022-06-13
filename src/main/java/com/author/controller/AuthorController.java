@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.author.domain.Author;
 import com.author.services.AuthorService;
-import com.author.validation.ValidationUtil;
+import com.author.validation.AuthorValidations;
 
 import lombok.extern.slf4j.Slf4j;
 @Slf4j
@@ -34,15 +34,25 @@ public class AuthorController {
 	//Logger logger = Logger.getLogger(AuthorController.class.getName());
 	
 	@GetMapping("Add")
-	public String addAuthor() {
+	public String addAuthor( ModelMap model,HttpSession session) {
+		String username = (String) session.getAttribute("username");
+		if (username == null) {
+			model.addAttribute("loginError", "your session is expired. Please re-enter your credentials");
+			return "index";
+		}
 		return "addAuthor";
 
 	}
 
 	@PostMapping("Add")
-	public String addAuthor(@ModelAttribute Author person, ModelMap model) {
+	public String addAuthor(@ModelAttribute Author person, ModelMap model,HttpSession session) {
+		String username = (String) session.getAttribute("username");
+		if (username == null) {
+			model.addAttribute("loginError", "your session is expired. Please re-enter your credentials");
+			return "index";
+		}
 		// add bean validation
-		String error = ValidationUtil.validate(person);
+		String error = AuthorValidations.validate(person);
 		if (StringUtils.hasLength(error)) {
 			model.addAttribute("author", person);
 			model.addAttribute("emptyFliedError", error);
@@ -58,7 +68,12 @@ public class AuthorController {
 	}
 
 	@GetMapping("/GetAuthorServlet")
-	public String getAuthor(ModelMap model) {
+	public String getAuthor(ModelMap model,HttpSession session) {
+		String username = (String) session.getAttribute("username");
+		if (username == null) {
+			model.addAttribute("loginError", "your session is expired. Please re-enter your credentials");
+			return "index";
+		}
 		List<Author> authorList = author.getallAuthorDetails();
 		log.info("get authors data");
 		model.addAttribute("authorList", authorList);
@@ -67,19 +82,30 @@ public class AuthorController {
 	}
 
 	@GetMapping("/Edit/{authorId}")
-	public String editAuthor(@PathVariable("authorId") Integer authorId, Model model) {
-		Author authorDetails = author.findAuthorbyId(authorId);
+	public String editAuthor(@PathVariable("authorId") Integer authorId, Model model,HttpSession session) {
+		String username = (String) session.getAttribute("username");
+		if (username == null) {
+			model.addAttribute("loginError", "your session is expired. Please re-enter your credentials");
+			return "index";
+		}
+		Author authorDetails = author.findAuthorId(authorId);
 		model.addAttribute("author", authorDetails);
 		return "editAuthorData";
 
 	}
 
 	@PostMapping("Edit")
-	public String editAuthor1(@ModelAttribute Author person, ModelMap model) {
+	public String editAuthor1(@ModelAttribute Author person, ModelMap model, HttpSession session) {
+		
+		String username = (String) session.getAttribute("username");
+		if (username == null) {
+			model.addAttribute("loginError", "your session is expired. Please re-enter your credentials");
+			return "index";
+		}
 
 		// edit bean validation
 		
-		String error = ValidationUtil.validate(person);
+		String error = AuthorValidations.validate(person);
 		if (StringUtils.hasLength(error)) {
 			model.addAttribute("author", person);
 			model.addAttribute("emptyFliedError", error);
@@ -94,7 +120,12 @@ public class AuthorController {
 	}
 
 	@GetMapping("/Delete")
-	public String deleteAuthor(Integer authorId, ModelMap model) {
+	public String deleteAuthor(Integer authorId, ModelMap model,HttpSession session) {
+		String username = (String) session.getAttribute("username");
+		if (username == null) {
+			model.addAttribute("loginError", "your session is expired. Please re-enter your credentials");
+			return "index";
+		}
 		author.remove(authorId);
 		log.info("remove author data");
 		List<Author> authorList = author.getallAuthorDetails();
@@ -105,7 +136,7 @@ public class AuthorController {
 	}
 	
 	@GetMapping("/searchAuthor")
-	public String searchPatientRecord(String authorId, Model uiModel, HttpSession session) {
+	public String searchAuthorRecord(String authorId,String authorName,String bornLocation,String bookTheme, Model uiModel, HttpSession session) {
 		String username = (String) session.getAttribute("username");
 		Author authors = null;
 
@@ -121,7 +152,7 @@ public class AuthorController {
 				return "GetData";
 				
 			}
-			authors = author.findAuthorbyId(Integer.parseInt(authorId));
+			authors = author.findAuthorbyId(Integer.parseInt(authorId),authorName,bornLocation,bookTheme);
 			uiModel.addAttribute("searchAuthor", authors);
 			return "searchAuthorById";
 		

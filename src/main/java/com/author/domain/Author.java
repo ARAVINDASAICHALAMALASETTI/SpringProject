@@ -2,6 +2,8 @@ package com.author.domain;
 
 import java.util.Date;
 
+import javax.validation.constraints.NotNull;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.AllArgsConstructor;
@@ -21,6 +23,7 @@ public class Author {
 	private Integer authorId;
 	private String authorName;
 	private String gender;
+	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date bornDate;
 	private String bornLocation;

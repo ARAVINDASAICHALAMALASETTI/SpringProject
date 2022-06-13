@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel=stylesheet href="./css/loginform.css">
+<link rel=stylesheet href="/css/loginform.css">
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -25,7 +25,7 @@
 		<form action="/author/Login" method="post">
 			<div class="center">
 				<h1 class="Page">Login</h1>
-				
+				<h5 class="Pages">Only admin's can access and Use this application.</h5>
 				<p class="error">
 					<c:out value="${loginError}"></c:out>
 			</div>
@@ -44,8 +44,8 @@
 				</div>
 				<button class="submit mb-5" onclick="Login()">Login</button>
 				<div>
-				<a href ="/author/addRegister">SignUp-?</a>
-			</div>
+					<a href ="/author/addRegister">SignUp-?</a>
+				</div>
 			</div>
 		</form type="submit">
 	</div>

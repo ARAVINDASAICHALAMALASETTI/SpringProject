@@ -5,7 +5,7 @@ import java.util.Date;
 
 import com.author.domain.Author;
 
-public class ValidationUtil {
+public class AuthorValidations {
 	
 
 	static DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-mm-dd");

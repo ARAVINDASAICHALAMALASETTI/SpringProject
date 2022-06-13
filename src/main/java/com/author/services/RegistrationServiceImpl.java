@@ -6,13 +6,13 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.author.DataBase.RegistrationDao;
 import com.author.domain.RegisterForm;
-import com.author.util.RegisterFormUtil;
 @Service
-public class RegisterFormImpl implements RegisterService {
+public class RegistrationServiceImpl implements RegistrationService {
 
 	@Autowired
-	RegisterFormUtil form;
+	RegistrationDao form;
 	
 	@Override
 	public boolean insertRegisterFormValues(RegisterForm person) {
@@ -29,11 +29,23 @@ public class RegisterFormImpl implements RegisterService {
 	}
 
 	@Override
-	public List<RegisterForm> getRegisterFormDetailsList() {
+	public RegisterForm getRegisterFormDetailsList(String Email) {
 		// TODO Auto-generated method stub
 		
 		try {
-			return form.getRegisterFormDetailsList();
+			return form.getRegisterFormDetailsList(Email);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public List<RegisterForm> getAllRegisterFormDetailsList() {
+		// TODO Auto-generated method stub
+		try {
+			return form.getAllRegisterFormDetailsList();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

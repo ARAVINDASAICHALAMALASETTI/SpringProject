@@ -17,7 +17,7 @@ import org.springframework.web.method.annotation.MethodArgumentTypeMismatchExcep
 
 import com.author.exception.AuthorIdNotFoundException;
 
-//@ControllerAdvice
+@ControllerAdvice
 public class CustomController {
 
 	@ExceptionHandler(value = NoSuchElementException.class)

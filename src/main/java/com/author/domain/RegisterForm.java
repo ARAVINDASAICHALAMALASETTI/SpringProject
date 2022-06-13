@@ -44,8 +44,7 @@ public class RegisterForm {
 	//@Pattern(message = "not strong password" , regexp = "(?=.{8,})(?=..*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])")
 	private String password;
 	@NotNull(message = "phoneNumber can't be null")
-	//@Size(min = 10 ,message="not use less than 10 digits")
-	//@Size(max = 11,message="not use more than 10 digits")
+	
 	private Long phoneNumber;
 	
 }

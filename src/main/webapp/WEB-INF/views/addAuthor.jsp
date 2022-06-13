@@ -29,8 +29,8 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-12">
-					<h3 class="main-heading pt-4 mt-5">Add Author's Data</h3>
-					<form action="/author/Add" method="post">
+					<h3 class="main-heading pt-4 mt-5">Add Author Data</h3>
+					<form action="/author/Add" modelAttribute="author" method="post">
 
 						<p class="error">
 							<c:out value="${emptyFliedError }"></c:out>
@@ -81,8 +81,7 @@
 								value='<c:out value="${author.lastBookPublishDate}" />' />
 						</div>
 						<div class="center mt-5">
-							<button class="add-todo-button" type="submit"
-								onclick="displayDetails()">Add</button>
+							<button class="add-todo-button" type="submit">Add</button>
 						</div>
 					</form>
 				</div>

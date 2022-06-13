@@ -37,8 +37,8 @@
 				<div class="navbar-nav m-auto">
 					<a class="nav-link active text-white" aria-current="page" href="#">Home</a>
 					<a class="nav-link active text-white" href="/author/Add">Add
-						data</a> <a class="nav-link active text-white"
-						href="/author/GetAuthorServlet">Get All Data</a>
+						author</a> <a class="nav-link active text-white"
+						href="/author/GetAuthorServlet">Get All Author's</a>
 					<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle text-white" href="#"
 						id="navbarDropdownMenuLink" role="button"
@@ -51,13 +51,14 @@
 							Register User's List</a></li>
 						</ul></li>
 				</div>
-				<a class="nav-link active text-white" href="Logout">Logout</a>
+				<a class="nav-link active text-white" href="/Logout">Logout</a>
 
 
 			</div>
 		</div>
 	</nav>
-
+	
+	 
 
 
 

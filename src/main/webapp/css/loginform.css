@@ -80,6 +80,12 @@ body{
     font-weight: bolder;
 }
 
+.Pages{
+    color: rgb(128, 0, 128);
+    font-size: 28px;
+    font-family: "Roboto";
+    font-weight: bolder;
+}
 #error-msg{
     font-family: 'Poppins',sans-serif;
 }

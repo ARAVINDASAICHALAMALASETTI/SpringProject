@@ -1,17 +1,19 @@
 package com.author.exceptions;
 
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.NoSuchElementException;
 import java.util.logging.Logger;
 
 
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
-@ControllerAdvice
+//@ControllerAdvice
 public class ExceptionController {
 	
 	Logger logger = Logger.getLogger(ExceptionController.class.getName());
@@ -22,7 +24,28 @@ public class ExceptionController {
 		 model.addAttribute("error","The value is present in Data Base, Please change your request");
 		 return "error";
 	}
-	//java.lang.NumberFormatException,org.springframework.validation.BindException,,
+	//NumberFormatException,BindException,SQLIntegrityConstraintViolationException
+	
+	@ExceptionHandler(value = DuplicateKeyException.class)
+	public String handleDuplicateKey(DuplicateKeyException ex,Model model){
+		logger.info("error" + ex.getMessage());
+		 model.addAttribute("error","do not enter duplicate data.");
+		 return "error";
+	}
+	
+	@ExceptionHandler(value = SQLIntegrityConstraintViolationException.class)
+	public String handleSQLIntegrityConstraintViolationException(SQLIntegrityConstraintViolationException ex,Model model){
+		logger.info("error" + ex.getMessage());
+		 model.addAttribute("error","do not enter repeated data.");
+		 return "error";
+	}
+	
+	/*@ExceptionHandler(value = {DuplicateKeyException.class,SQLIntegrityConstraintViolationException.class})
+	public String handleDuplicateKeyException(DuplicateKeyException ex,Model model){
+		logger.info("error" + ex.getMessage());
+		 model.addAttribute("error","do not enter repeated data.");
+		 return "error";
+	}*/
 	
 	@ExceptionHandler(value = BindException.class)
 	public String handleBindException(BindException ex,Model model){

@@ -20,7 +20,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="center">
-                    <h3 class="main-heading pt-4 mt-5 mb-2">Edit Book's Data</h3>
+                    <h3 class="main-heading pt-4 mt-5 mb-2">Edit Book Data</h3>
                 
                 <p class="error"><c:out value="${emptyFliedError }"></c:out></p>
                 </div>

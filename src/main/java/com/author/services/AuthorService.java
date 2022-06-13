@@ -12,8 +12,10 @@ public interface AuthorService{
 	public List<Author> getallAuthorDetails();
 	public Author  remove(int authorId);
 	public Author updateAuthorDetails(Author person);
-	public List<Author> sortByAuthorName();
 	public List<Author> createTable();
-	public Author findAuthorbyId(int authorId);
+	public Author findAuthorbyId(int authorId,String authorName,String bornLocation,String bookTheme);
+	public Author findAuthorId(int authorId);
+	public Author findAuthorbyBornLocation(String bornLocation);
+	public Author findAuthorbyBookTheme(String bookTheme);
 	
 }

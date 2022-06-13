@@ -10,7 +10,7 @@ import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-public class AuthorBookDetailsDomain {
+public class AuthorBooks {
 
 	// private variable
 	private Integer authorId;
@@ -44,7 +44,7 @@ public class AuthorBookDetailsDomain {
 
 	// constructor with arguments
 
-	public AuthorBookDetailsDomain(Integer authorId, String bookName, Integer bookPagesCount, Date bookPublishDate,
+	public AuthorBooks(Integer authorId, String bookName, Integer bookPagesCount, Date bookPublishDate,
 			String jointAuthorship, String bookLanguage, String bookPrice, String publishment, Integer bookId) {
 		super();
 		this.authorId = authorId;
@@ -58,7 +58,7 @@ public class AuthorBookDetailsDomain {
 		this.bookId = bookId;
 	}
 
-	public AuthorBookDetailsDomain() {
+	public AuthorBooks() {
 		// TODO Auto-generated constructor stub
 	}
 

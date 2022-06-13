@@ -46,7 +46,7 @@
                		<p class= "center"><form:errors path ="password" /></p>
                     <div class="d-flex flex-row justify-content-center mt-2">
                         <p class="heading m-auto">Password </p>
-                        <form:input class="todo-user-input mt-2" placeholder="enter password" path = "password"/>
+                        <form:input type = "password" class="todo-user-input mt-2" placeholder="enter password" path = "password"/>
                     </div>
                     <p class= "center"><form:errors path="phoneNumber" /></p>
                     <div class="d-flex flex-row justify-content-center mt-2">

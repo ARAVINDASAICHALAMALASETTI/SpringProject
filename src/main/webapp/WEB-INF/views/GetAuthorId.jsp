@@ -52,7 +52,7 @@
                      <td><c:out value="${book.bookId}" /></td>
                     <td><a href="/book/edit/<c:out value="${book.bookId}"/>">
                     <button><i class="far fa-edit"></i></button></td>
-                    <td><a href="/book/delete?bookId=<c:out value="${book.bookId}"/>">
+                    <td><a href="/book/delete/<c:out value="${book.bookId}"/>">
                     <button><i class="fas fa-trash-alt" onclick="return confirm('Are You Sure want to Delete')"></button></i></td>
                 </tr>
             </c:forEach>

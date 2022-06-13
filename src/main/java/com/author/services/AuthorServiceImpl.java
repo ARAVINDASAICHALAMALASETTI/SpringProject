@@ -6,12 +6,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.author.DataBase.AuthorDao;
 import com.author.domain.Author;
-import com.author.util.AuthorServiceJdbcUtil;
 @Service
 public class AuthorServiceImpl implements AuthorService {
 	@Autowired
-	AuthorServiceJdbcUtil author;
+	AuthorDao author;
 	
 	
 	@Override
@@ -67,11 +67,7 @@ public class AuthorServiceImpl implements AuthorService {
 			return null;	
 	}
 
-	@Override
-	public List<Author> sortByAuthorName() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 
 	@Override
 	public List<Author> createTable() {
@@ -89,10 +85,46 @@ public class AuthorServiceImpl implements AuthorService {
 
 	
 	@Override
-	public Author findAuthorbyId(int authorId) {
+	public Author findAuthorbyId(int authorId,String authorName,String bornLocation,String bookTheme) {
 		// TODO Auto-generated method stub
 		try {
-			return author.authorId(authorId);
+			return author.authorId(authorId,authorName,bornLocation,bookTheme);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public Author findAuthorId(int authorId) {
+		// TODO Auto-generated method stub
+		try {
+			return author.authorById(authorId);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public Author findAuthorbyBornLocation(String bornLocation) {
+		// TODO Auto-generated method stub
+		try {
+			return author.bornLocation(bornLocation);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public Author findAuthorbyBookTheme(String bookTheme) {
+		// TODO Auto-generated method stub
+		try {
+			return author.bookTheme(bookTheme);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
