@@ -2,8 +2,6 @@ package com.author.domain;
 
 import java.util.Date;
 
-import javax.validation.constraints.NotNull;
-
 import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.AllArgsConstructor;

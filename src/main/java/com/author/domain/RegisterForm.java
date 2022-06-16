@@ -9,6 +9,8 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import com.author.validation.PhoneNumber;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -44,7 +46,7 @@ public class RegisterForm {
 	//@Pattern(message = "not strong password" , regexp = "(?=.{8,})(?=..*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])")
 	private String password;
 	@NotNull(message = "phoneNumber can't be null")
-	
+	//@PhoneNumber(lower = 10, upper = 11)
 	private Long phoneNumber;
 	
 }
