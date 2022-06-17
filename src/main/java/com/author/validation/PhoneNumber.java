@@ -23,8 +23,12 @@ public @interface PhoneNumber {
 
 	int upper() default 11;
 
-	String message() default "phone number must be 10 digits";
-
+	//String message() default "phone number must be 10 digits";//default message
+	
+	//String message() default "phone number must be {lower} digits or not more than {upper} digits"; //customise mesage
+	
+	String message() default "{PhoneNumberMessage}";
+	
 	Class<?>[] groups() default {};
 
 	Class<? extends Payload>[] payload() default {};
