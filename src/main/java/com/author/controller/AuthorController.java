@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.author.domain.Author;
 import com.author.services.AuthorService;
@@ -60,11 +61,16 @@ public class AuthorController {
 		}
 		author.addAuthor(person);
 		log.info("add author data");
-		List<Author> authorList = author.getallAuthorDetails();
+		/*List<Author> authorList = author.getallAuthorDetails();
 		log.info("get authors data");
 		model.addAttribute("authorList", authorList);
-		return "GetData";
+		return "GetData";*/
+		return "redirect:/author/FetchData";
 
+	}
+	@GetMapping("/FetchData")
+	public String FetchData() {
+		return "domain";
 	}
 
 	@GetMapping("/GetAuthorServlet")
@@ -136,7 +142,7 @@ public class AuthorController {
 	}
 	
 	@GetMapping("/searchAuthor")
-	public String searchAuthorRecord(String authorId,String authorName,String bornLocation,String bookTheme, Model uiModel, HttpSession session) {
+	public String searchAuthorRecord(String authorId, Model uiModel, HttpSession session) {
 		String username = (String) session.getAttribute("username");
 		Author authors = null;
 
@@ -152,7 +158,7 @@ public class AuthorController {
 				return "GetData";
 				
 			}
-			authors = author.findAuthorbyId(Integer.parseInt(authorId),authorName,bornLocation,bookTheme);
+			authors = author.findAuthorbyId(Integer.parseInt(authorId));
 			uiModel.addAttribute("searchAuthor", authors);
 			return "searchAuthorById";
 		

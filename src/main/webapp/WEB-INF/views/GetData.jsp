@@ -36,7 +36,7 @@
 					<h3 class="main-heading pt-4 mt-5 mb-3">Display Author's data</h3>
 					
 					<form action="/author/searchAuthor">
-					<c:out value='${inValid data}'/>
+					<c:out value= "${'inValid data'}" />
 					<input type="text" placeholder="Enter data" name ="authorId" name="authorName" name="bornLocation" name="bookTheme">
 					<button class="btn btn-primary" type="submit">search</button>
 					</form>

@@ -85,10 +85,10 @@ public class AuthorServiceImpl implements AuthorService {
 
 	
 	@Override
-	public Author findAuthorbyId(int authorId,String authorName,String bornLocation,String bookTheme) {
+	public Author findAuthorbyId(int authorId) {
 		// TODO Auto-generated method stub
 		try {
-			return author.authorId(authorId,authorName,bornLocation,bookTheme);
+			return author.authorById(authorId);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

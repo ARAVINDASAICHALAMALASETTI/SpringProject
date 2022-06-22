@@ -13,7 +13,7 @@ public interface AuthorService{
 	public Author  remove(int authorId);
 	public Author updateAuthorDetails(Author person);
 	public List<Author> createTable();
-	public Author findAuthorbyId(int authorId,String authorName,String bornLocation,String bookTheme);
+	public Author findAuthorbyId(int authorId);
 	public Author findAuthorId(int authorId);
 	public Author findAuthorbyBornLocation(String bornLocation);
 	public Author findAuthorbyBookTheme(String bookTheme);

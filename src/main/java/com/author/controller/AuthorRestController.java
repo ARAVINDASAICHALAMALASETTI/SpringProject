@@ -56,9 +56,9 @@ public class AuthorRestController {
 	}
 	
 	@GetMapping("rest/GetSearchData/{authorName}")
-	public Author getSearchData(@PathVariable Integer authorId,String authorName,String bornLocation,String bookTheme) {
+	public Author getSearchData(@PathVariable Integer authorId) {
 
-		Author authorList = author.findAuthorbyId(authorId, authorName, bornLocation, bookTheme);
+		Author authorList = author.findAuthorbyId(authorId);
 		logger.info("get author by id");
 		return authorList;
 

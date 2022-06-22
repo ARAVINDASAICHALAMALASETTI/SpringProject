@@ -58,11 +58,12 @@ public class BookController {
 			}
 				book.addBook(person);
 				logger.info("add book data");
-				List <AuthorBooks> bookList = book.getallBookDetails();
+				/*List <AuthorBooks> bookList = book.getallBookDetails();
 				logger.info("add book to get all books data");
 				model.addAttribute("bookList",bookList);
-				return "GetBookData";
-			
+				return "GetBookData";*/
+				return "redirect:/book/GetBookServlet";
+			    
 		}
 		@GetMapping("/GetBookServlet")
 		public String getallBook(ModelMap model,HttpSession session) {

@@ -2,6 +2,7 @@ package com.author.domain;
 
 
 
+import javax.validation.constraints.Digits;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
@@ -46,6 +47,7 @@ public class RegisterForm {
 	//@Pattern(message = "not strong password" , regexp = "(?=.{8,})(?=..*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])")
 	private String password;
 	@NotNull(message = "phoneNumber can't be null")
+	@Digits(message = "phonenumber must be 10 digits",fraction = 0, integer = 10)
 	//@PhoneNumber(lower = 10, upper = 11)
 	private Long phoneNumber;
 	
